@@ -1,2 +1,3 @@
+GET /admin/products/edit/:id
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+POST /admin/products/edit/:id
