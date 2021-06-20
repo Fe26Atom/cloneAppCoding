@@ -1,3 +1,2 @@
-GET /admin/products/edit/:id
+GET /admin/products/delete/:id
 
-POST /admin/products/edit/:id
