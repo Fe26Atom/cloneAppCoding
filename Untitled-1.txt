@@ -1,2 +1,16 @@
-GET /admin/products/delete/:id
 
+CRUD
+
+select, insert, update, delete
+
+models.테이블명.create(데이터)
+models.테이블명.findAll(조회조건)
+models.테이블명.findByPk(primary key)
+models.테이블명.findOne(조회조건)
+models.테이블명.update(데이터, 조회조건)
+models.테이블명.destroy(조회조건)
+
+/admin
+
+/contacts
+Contacts.js
