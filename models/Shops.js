@@ -13,6 +13,19 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
+    Shops.associate = ( models ) => {
+        
+        Shops.hasMany( models.ShopsMenu , {
+            as : 'Menu',
+            foreignKey: 'shop_id',
+            sourceKey: 'id',
+            onDelete: 'CASCADE'
+        });
+    }
+    
+
+
+
     Shops.prototype.dateFormat = (date) => (
         moment(date).format('YYYY-MM-DD')
     );
