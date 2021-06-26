@@ -1,2 +1,1 @@
-# sequelize crud
-
+# 패캠이츠 코드

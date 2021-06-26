@@ -2,18 +2,20 @@ const { Router } = require('express');
 const router = Router();
 const ctrl = require('./admin.ctrl');
 
-router.get('/products', ctrl.get_products );
+router.get('/shops', ctrl.get_shops );
 
-router.get('/products/write', ctrl.get_products_write );
+router.get('/shops/write', ctrl.get_shops_write );
 
-router.post('/products/write', ctrl.post_products_write );
+router.post('/shops/write', ctrl.post_shops_write );
 
-router.get('/products/detail/:id', ctrl.get_products_detail );
+router.get('/shops/detail/:id', ctrl.get_shops_detail );
 
-router.get('/products/edit/:id', ctrl.get_products_edit );
+router.get('/shops/edit/:id', ctrl.get_shops_edit );
 
-router.post('/products/edit/:id', ctrl.post_products_edit );
+router.post('/shops/edit/:id', ctrl.post_shops_edit );
 
-router.get('/products/delete/:id', ctrl.get_products_delete );
+router.get('/shops/delete/:id', ctrl.get_shops_delete );
+
+
 
 module.exports = router;

@@ -6,14 +6,15 @@ const bodyParser = require('body-parser');
 // db 관련
 const db = require('./models');
 
+
 class App {
 
     constructor () {
         this.app = express();
-        
+
         // db 접속
         this.dbConnection();
-
+        
         // 뷰엔진 셋팅
         this.setViewEngine();
 
@@ -38,13 +39,12 @@ class App {
 
     }
 
-
     dbConnection(){
         // DB authentication
         db.sequelize.authenticate()
         .then(() => {
             console.log('Connection has been established successfully.');
-            // return db.sequelize.sync();
+            return db.sequelize.sync();
         })
         .then(() => {
             console.log('DB Sync complete.');
@@ -53,6 +53,7 @@ class App {
             console.error('Unable to connect to the database:', err);
         });
     }
+
 
     setMiddleWare (){
         
@@ -100,9 +101,9 @@ class App {
 
     errorHandler() {
 
-        this.app.use( (err, req, res,  _ ) => {
-            res.status(500).render('common/500.html')
-        });
+        // this.app.use( (err, req, res,  _ ) => {
+        //     res.status(500).render('common/500.html')
+        // });
     
     }
 
