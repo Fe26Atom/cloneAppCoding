@@ -1,13 +1,10 @@
+.then은 프로마이스
 
-callbackhell 
-callback안에 callback안에 callbackhell
--> 단계별로 할려고 하다가 코드가 꼬임
 
-그걸 하기 위하여 Promise를 이용한다.
 
-Promise 만들기
-new로 만든다.
-1.resolve와 reject를 인자로 가지는 함수를 만든다.
-2.내가 원하는 시점을 resolve로 받아오자!
+async를 이용하여 then 처리를 가볍게 해줄 수 있다.
 
-리젝트는 나중에 에러처리를 할 수 있는 것
+순서와 컴퓨터 성능에 좋아진다.
+
+실행관계에 보장을 받을 수 있다.
+
