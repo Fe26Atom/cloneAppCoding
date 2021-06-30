@@ -104,7 +104,7 @@ exports.get_shops_delete = async(req, res) => {
 
 }
 
-/*
+
 //메뉴 추가
 exports.add_menu = async ( req, res ) => {
     try{
@@ -114,20 +114,18 @@ exports.add_menu = async ( req, res ) => {
     }catch(e){
 
     }
-};
-*/
-exports.add_menu = async(req, res) => {
+}
 
-	try{
 
-			const shop = await models.Shops.findByPk(req.params.id);
-			// create + as에 적은 내용 ( shops.js association 에서 적은 내용 )
-			await shop.createMenu(req.body);
-			res.redirect('/admin/shops/detail/'+req.params.id);  
-
-	}catch(e){
-			console.log(e)
-	}
-
-	
+exports.remove_menu = async(req, res) => {
+    try{
+        await models.ShopsMenu.destroy({
+            where : {
+                id : req.params.menu_id
+            }
+        })
+        res.redirect('/admin/shops/detail/' + req.params.shop_id);
+    }catch(e){
+        console.log(e)
+    }
 }
