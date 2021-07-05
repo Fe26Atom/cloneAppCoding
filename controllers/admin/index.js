@@ -2,11 +2,27 @@ const { Router } = require('express');
 const router = Router();
 const ctrl = require('./admin.ctrl');
 
+const path = require('path');
+const uploadDir = path.join( __dirname , '../../uploads' ); // 루트의 uploads위치에 저장한다.
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination : (req, file, callback) => {
+        callback(null, uploadDir );
+    },
+    filename : (req, file, callback) => {
+        callback(null, 'shops-' + Date.now() + '.' + file.mimetype.split('/')[1] );
+    }
+});
+const upload = multer({ storage: storage });
+
+
+
 router.get('/shops', ctrl.get_shops );
 
 router.get('/shops/write', ctrl.get_shops_write );
 
-router.post('/shops/write', ctrl.post_shops_write );
+router.post('/shops/write', upload.single('thumbnail') , ctrl.post_shops_write );
 
 router.get('/shops/detail/:id', ctrl.get_shops_detail );
 

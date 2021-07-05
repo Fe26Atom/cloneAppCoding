@@ -1,0 +1,8 @@
+
+모듈설치
+
+템플릿에서 enctype=multipart/form-data 추가
+
+Shops 모델 필드명 추가
+
+미들웨어 작성
