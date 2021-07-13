@@ -57,7 +57,7 @@ exports.get_shops_detail = async(req, res) => {
 }
 
 
-exports.get_shops_edit = async(req, res) => {
+exports.get_shops_edit = async(req, res) => { 
 
     try{
 
@@ -73,7 +73,20 @@ exports.get_shops_edit = async(req, res) => {
 
 exports.post_shops_edit = async(req, res) => {
 
+    const fs = require('fs');
+    const path = require('path');
+    const uploadDir = path.join( __dirname , '../../uploads');
+    
+    
     try{
+
+        const shop = await models.Shops.findByPk(req.params.id);
+
+        if(req.file && shop.thumbnail ) {
+            fs.unlinkSync( uploadDir + '/' + shop.thumbnail );
+        }
+
+        req.body.thumbnail = (req.file) ? req.file.filename : shop.thumbnail;
 
         await models.Shops.update(
             req.body , 
@@ -84,7 +97,7 @@ exports.post_shops_edit = async(req, res) => {
         res.redirect('/admin/shops/detail/' + req.params.id );
 
     }catch(e){
-
+        console.log(e);
     }
 
 }
